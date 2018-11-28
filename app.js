@@ -6,9 +6,22 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
 var app = express();
 
+//db connect
+var mysql = require('mysql');
+
+var con = mysql.createConnection({
+  host: "sql9.freemysqlhosting.net",
+  user: "sql9267398",
+  password:"L34DjpGbQP",
+  database: "sql9267398"
+});
+
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
