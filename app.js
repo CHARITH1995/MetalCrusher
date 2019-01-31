@@ -9,19 +9,7 @@ var usersRouter = require('./routes/users');
 var app = express();
 
 //db connect
-var mysql = require('mysql');
 
-var con = mysql.createConnection({
-  host: "sql9.freemysqlhosting.net",
-  user: "sql9267398",
-  password:"L34DjpGbQP",
-  database: "sql9267398"
-});
-
-con.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
-});
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -32,7 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.use('/additems', indexRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
